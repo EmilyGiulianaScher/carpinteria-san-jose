@@ -1,0 +1,146 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  background-color: white;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: 60px;
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.logo {
+  height: 35px;
+  width: auto;
+}
+
+.brandName {
+  font-weight: 800;
+  font-size: 1.1rem;
+  color: var(--color-primary);
+  display: none; /* Oculto en móvil */
+}
+
+@media (min-width: 768px) {
+  .brandName { display: block; }
+  .navbar { padding: 15px 20px; }
+}
+
+/* LINKS */
+.navLinks {
+  display: flex;
+  gap: 5px; /* Pegamos más los botones */
+  align-items: center;
+}
+
+.link {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  color: #555;
+  cursor: pointer;
+  font-weight: 500;
+  padding: 8px;
+  white-space: nowrap;
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdownContent {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: -20px;
+  background-color: white;
+  min-width: 150px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  padding: 10px 0;
+  z-index: 101;
+}
+
+.dropdown:hover .dropdownContent { display: block; }
+
+.dropdownItem {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 10px 20px;
+  border: none;
+  background: white;
+  color: #333;
+}
+
+.searchContainer {
+  position: relative;
+  margin-left: 5px;
+}
+
+.searchInput {
+  padding: 8px 10px 8px 30px;
+  border-radius: 20px;
+  border: 1px solid #ddd;
+  outline: none;
+  font-size: 0.9rem;
+  background-color: #f8f9fa;
+  transition: width 0.3s ease;
+  width: 150px; 
+}
+
+.searchInput:focus {
+  width: 200p;
+  border-color: var(--color-primary);
+  background-color: white;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #999;
+  font-size: 0.9rem;
+  pointer-events: none;
+}
+
+@media (max-width: 600px) {
+  .link {
+    font-size: 0.85rem;
+    padding: 5px;
+  }
+
+  .searchInput {
+    width: 35px;
+    padding-left: 28px;
+    cursor: pointer;
+    background: transparent;
+    border-color: transparent;
+  }
+  
+  .searchInput:focus {
+    width: 140px;
+    background-color: white;
+    border-color: var(--color-primary);
+    position: absolute;
+    right: 0;
+    top: -20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+  
+  .searchIcon {
+    left: 8px;
+    color: var(--color-primary); 
+  }
+}
