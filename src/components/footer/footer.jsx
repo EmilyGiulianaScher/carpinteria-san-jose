@@ -9,7 +9,7 @@ const Footer = ({ categories, onCategorySelect }) => {
         <div className={styles.column}>
           <h3>{CLIENT_CONFIG.storeName}</h3>
           <p className={styles.text}>
-            La mejor calidad al mejor precio. Envíos a todo el país y atención
+            Fabricación artesanal • Diseños personalizados. Envíos a todo el país y atención
             personalizada.
           </p>
           <div className={styles.socialLinks}>

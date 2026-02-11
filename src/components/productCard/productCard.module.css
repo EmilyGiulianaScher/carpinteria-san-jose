@@ -2,8 +2,8 @@
   background-color: var(--color-card);
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-  border: 1px solid #eee;
+  border: 1px solid rgba(180,154,130,0.35);
+  box-shadow: 0 6px 18px rgba(46,44,36,0.08);
   transition: transform 0.2s, opacity 0.3s;
   position: relative;
   display: flex;

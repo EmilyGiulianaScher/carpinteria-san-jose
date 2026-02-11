@@ -6,6 +6,7 @@ import ProductModal from "./components/productModal/productModal";
 import HeroCarousel from "./components/heroCarousel/heroCarousel";
 import Footer from "./components/footer/footer";
 import FloatingWhatsApp from "./components/floatingWhatsApp/floatingWhatsApp";
+import MaterialsSection from "./components/materialSection/materialsSection";
 import { CLIENT_CONFIG } from "./config";
 
 function App() {
@@ -19,8 +20,8 @@ function App() {
       products.map(
         (p) =>
           p.category?.trim().charAt(0).toUpperCase() +
-            p.category?.trim().slice(1).toLowerCase() || "Varios"
-      )
+            p.category?.trim().slice(1).toLowerCase() || "Varios",
+      ),
     );
     return ["Todos", ...Array.from(uniqueCategories)];
   }, [products]);
@@ -64,37 +65,49 @@ function App() {
         searchTerm={searchTerm}
       />
 
-      <div className="container">
-        {selectedCategory === "Todos" && searchTerm === "" && (
-          <>
-            <div style={{ textAlign: "center", marginBottom: "2rem" }}>
-              <h1
-                style={{
-                  fontSize: "2.5rem",
-                  marginBottom: "0.5rem",
-                  color: "var(--color-primary)",
-                }}
-              >
-                {CLIENT_CONFIG.storeName}
-              </h1>
-              <p style={{ color: "#666" }}>Productos destacados</p>
-            </div>
+      {/* --- BLOQUE DE INICIO (HOME) --- */}
+      {/* Se muestra solo si no hay búsqueda y la categoría es "Todos" */}
+      {selectedCategory === "Todos" && searchTerm === "" && (
+        <>
+          <div style={{ textAlign: "center", marginBottom: "2rem", marginTop: "1rem" }}>
+            <h1
+              style={{
+                fontSize: "2.5rem",
+                marginBottom: "0.5rem",
+                color: "var(--color-primary)",
+                fontFamily: "Merriweather, serif" // Agregué la fuente serif aquí también
+              }}
+            >
+              {CLIENT_CONFIG.storeName}
+            </h1>
+            <p style={{ color: "#666" }}>Diseño y calidad en madera</p>
+          </div>
+          
+          <div className="container">
             <HeroCarousel
               featuredProducts={featuredProducts}
               onSelect={setSelectedProduct}
             />
-          </>
-        )}
+          </div>
 
+          {/* AQUÍ AGREGAMOS LA NUEVA SECCIÓN DE MATERIALES */}
+          <MaterialsSection />
+          
+        </>
+      )}
+
+      {/* --- BLOQUE DE LISTADO DE PRODUCTOS --- */}
+      <div className="container">
         <h2
           style={{
             marginTop: "40px",
             fontSize: "1.5rem",
             borderBottom: "1px solid #eee",
             paddingBottom: "10px",
+            color: "var(--color-text)"
           }}
         >
-          {searchTerm ? `Resultados para: "${searchTerm}"` : selectedCategory}
+          {searchTerm ? `Resultados para: "${searchTerm}"` : "Nuestro Catálogo"}
         </h2>
 
         <div className="category-filter" style={{ marginTop: "20px" }}>
@@ -113,7 +126,6 @@ function App() {
             </button>
           ))}
         </div>
-        {/* ------------------------------------------ */}
 
         <p style={{ marginBottom: "20px", color: "#888", fontSize: "0.9rem" }}>
           {filteredProducts.length} productos encontrados
@@ -140,7 +152,7 @@ function App() {
               }}
             >
               <div style={{ fontSize: "3rem", marginBottom: "10px" }}>😕</div>
-              No encontramos productos con ese nombre en esta categoría.
+              No encontramos productos con ese nombre.
               <br />
               <button
                 onClick={() => {

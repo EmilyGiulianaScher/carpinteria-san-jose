@@ -66,7 +66,7 @@ const ProductModal = ({ product, allProducts, onClose, onSelect }) => {
             
             {product.inStock ? (
               <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className={styles.whatsappButton}>
-                Pedir por WhatsApp
+               Consultar este trabajo
               </a>
             ) : (
               <div className={styles.noStock}>Producto Sin Stock</div>
