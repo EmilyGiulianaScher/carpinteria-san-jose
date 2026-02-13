@@ -1,6 +1,5 @@
-// src/components/ProductCard/ProductCard.jsx
 import React from 'react';
-import styles from './productCard.module.css'; // <--- Importamos los estilos aquí
+import styles from './productCard.module.css';
 
 const ProductCard = ({ product }) => {
   const { name, price, oldPrice, inStock, coverImage, category } = product;

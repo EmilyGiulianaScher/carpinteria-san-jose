@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import styles from "./HeroCarousel.module.css";
+import styles from "./heroCarousel.module.css";
 
 const HeroCarousel = ({ featuredProducts, onSelect }) => {
   const [activeIndex, setActiveIndex] = useState(0);
