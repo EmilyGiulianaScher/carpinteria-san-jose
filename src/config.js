@@ -1,4 +1,3 @@
-
 export const CLIENT_CONFIG = {
   storeName: import.meta.env.VITE_STORE_NAME || "Tienda Demo",
   logoUrl: import.meta.env.VITE_LOGO_URL || "",
@@ -8,14 +7,14 @@ export const CLIENT_CONFIG = {
   social: {
     instagram: import.meta.env.VITE_INSTAGRAM_URL,
     facebook: import.meta.env.VITE_FACEBOOK_URL,
-    locationUrl: "https://maps.app.goo.gl/eD4xbcLh8fiymfDQ6",
+    locationUrl: import.meta.env.VITE_MAP_URL,
   },
   contact: {
     address: import.meta.env.VITE_ADDRESS,
     phone: import.meta.env.VITE_PHONE,
-    email: import.meta.env.VITE_EMAIL
+    email: import.meta.env.VITE_EMAIL,
   },
   theme: {
     fontFamily: "'Inter', sans-serif",
-  }
+  },
 };

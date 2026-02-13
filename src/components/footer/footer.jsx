@@ -9,8 +9,8 @@ const Footer = ({ categories, onCategorySelect }) => {
         <div className={styles.column}>
           <h3>{CLIENT_CONFIG.storeName}</h3>
           <p className={styles.text}>
-            Fabricación artesanal • Diseños personalizados. Envíos a todo el país y atención
-            exclusiva.
+            Fabricación artesanal • Diseños personalizados. Envíos a todo el
+            país y atención exclusiva.
           </p>
           <div className={styles.socialLinks}>
             {CLIENT_CONFIG.social.instagram && (
@@ -19,16 +19,11 @@ const Footer = ({ categories, onCategorySelect }) => {
                 target="_blank"
                 className={styles.socialBtn}
               >
-                📸
-              </a>
-            )}
-            {CLIENT_CONFIG.social.facebook && (
-              <a
-                href={CLIENT_CONFIG.social.facebook}
-                target="_blank"
-                className={styles.socialBtn}
-              >
-                f
+                <img
+                  src="/public/social.png"
+                  alt="Instagram"
+                  className={styles.socialIcon}
+                />
               </a>
             )}
             {CLIENT_CONFIG.whatsappNumber && (
@@ -37,7 +32,11 @@ const Footer = ({ categories, onCategorySelect }) => {
                 target="_blank"
                 className={styles.socialBtn}
               >
-                💬
+                <img
+                  src="/public/whatsapp (1).png"
+                  alt="Instagram"
+                  className={styles.socialIcon}
+                />
               </a>
             )}
           </div>
@@ -59,21 +58,20 @@ const Footer = ({ categories, onCategorySelect }) => {
                 >
                   {cat}
                 </span>
-              )
+              ),
           )}
         </div>
 
         <div className={styles.column}>
           <h3>Contacto</h3>
           <p className={styles.text}>📍 {CLIENT_CONFIG.contact.address}</p>
-          <p className={styles.text}>📞 {CLIENT_CONFIG.contact.phone}</p>
 
           {CLIENT_CONFIG.social.locationUrl && (
             <a
               href={CLIENT_CONFIG.social.locationUrl}
               target="_blank"
               style={{
-                color: "var(--color-primary)",
+                color: "var(--color-bg)",
                 textDecoration: "none",
                 fontWeight: "bold",
                 marginTop: "10px",
@@ -83,6 +81,7 @@ const Footer = ({ categories, onCategorySelect }) => {
               Ver en Google Maps →
             </a>
           )}
+      
         </div>
       </div>
 

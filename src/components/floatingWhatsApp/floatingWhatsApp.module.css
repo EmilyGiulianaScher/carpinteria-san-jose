@@ -1,87 +1,105 @@
 .container {
   position: fixed;
-  bottom: 30px;
-  right: 30px;
-  z-index: 2000;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  gap: 10px;
+  font-family:
+    system-ui,
+    -apple-system,
+    sans-serif;
 }
 
-.whatsappBtn {
-  background-color: #5f7a61;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  cursor: pointer;
-  transition: all 0.3s ease;
+.messageBubble {
+  background-color: white;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  width: 200px;
+  animation: slideIn 0.3s ease-out;
+  border: 1px solid #eee;
   position: relative;
-  border: none;
-  text-decoration: none;
 }
 
-.whatsappBtn:hover {
-  transform: scale(1.1);
-  background-color: #128c7e;
-}
-
-.icon {
-  width: 35px;
-  height: 35px;
-  fill: white;
+.messageHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #333;
 }
 
 .closeBtn {
-  position: absolute;
-  top: -5px;
-  right: -5px;
-  background-color: #ef4444;
-  color: white;
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  border: 2px solid white;
+  background: none;
+  border: none;
   font-size: 14px;
-  font-weight: bold;
+  color: #999;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  z-index: 2001;
+  padding: 0 5px;
 }
 
 .closeBtn:hover {
-  background-color: #c62828;
+  color: red;
 }
 
-@keyframes popIn {
+.messageText {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.floatBtn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #25d366;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(37, 211, 102, 0.4);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.floatBtn:hover {
+  transform: scale(1.05);
+  background-color: #20bd5a;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.minimized {
+  padding: 12px;
+  width: 50px;
+  height: 50px;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.minimized .btnText {
+  display: none;
+}
+
+.minimized .icon {
+  width: 30px;
+  height: 30px;
+}
+@keyframes slideIn {
   from {
     opacity: 0;
-    transform: scale(0.5);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@media (max-width: 768px) {
-  .container {
-    bottom: 20px;
-    right: 20px;
-  }
-  .whatsappBtn {
-    width: 50px;
-    height: 50px;
-  }
-  .icon {
-    width: 30px;
-    height: 30px;
+    transform: translateY(0);
   }
 }
