@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "./navbar.module.css";
+import styles from "./navBar.module.css";
 import { CLIENT_CONFIG } from "../../config";
 
 const Navbar = ({ categories, onCategorySelect, onSearch, searchTerm }) => {
