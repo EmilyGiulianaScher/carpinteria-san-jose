@@ -20,7 +20,7 @@ const Footer = ({ categories, onCategorySelect }) => {
                 className={styles.socialBtn}
               >
                 <img
-                  src="/public/social.png"
+                  src="/social.png"
                   alt="Instagram"
                   className={styles.socialIcon}
                 />
@@ -33,7 +33,7 @@ const Footer = ({ categories, onCategorySelect }) => {
                 className={styles.socialBtn}
               >
                 <img
-                  src="/public/whatsapp (1).png"
+                  src="/whatsapp (1).png"
                   alt="Instagram"
                   className={styles.socialIcon}
                 />

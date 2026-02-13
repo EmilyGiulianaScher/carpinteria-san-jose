@@ -35,7 +35,7 @@ const FloatingWhatsApp = () => {
         title="Chatear por WhatsApp"
       >
         <img 
-          src="/public/whatsapp (1).png" 
+          src="/whatsapp (1).png" 
           alt="WhatsApp" 
           className={styles.icon} 
         />
