@@ -1,29 +1,33 @@
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap");
 :root {
   /* --- PALETA CARPINTERÍA SAN JOSÉ --- */
-  
+
   /* Natural Oak: Color principal (Botones, Precios, Activos) */
-  --color-primary: #955029; 
-  
+  --color-primary: #5f432e;
+
   /* Linen White: Fondo cálido de la web */
-  --color-bg: #f4e9d9; 
-  
+  --color-bg: #f4e9d9;
+
   /* Blanco Puro: Para que las tarjetas resalten sobre el fondo crema */
-  --color-card: #ffffff; 
-  
+  --color-card: #ffffff;
+
   /* Charcoal Black: Texto principal (no es negro puro, es más suave) */
-  --color-text: #2e2c24; 
-  
+  --color-text: #2e2c24;
+
   /* Greige: Color secundario para bordes y detalles sutiles */
-  --color-secondary: #af754f; 
+  --color-secondary: #af754f;
 
   /* Rojo: Para ofertas o sin stock (mantenemos alerta visual) */
-  --color-danger: #ef4444; 
+  --color-danger: #ef4444;
 }
 
 body {
   margin: 0;
-  font-family: 'Merriweather', system-ui, -apple-system, serif; /* Sugerencia: Fuente con serifa queda mejor en carpintería */
+  font-family:
+    "Merriweather",
+    system-ui,
+    -apple-system,
+    serif;
   background-color: var(--color-bg);
   background-image: url("data:image/svg+xml,%3Csvg ... %3C/svg%3E");
   color: var(--color-text);
@@ -36,7 +40,6 @@ body {
   padding: 20px;
 }
 
-/* Grilla de Productos */
 .grid-products {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -44,7 +47,6 @@ body {
   padding-bottom: 4rem;
 }
 
-/* Contenedor de Filtros (Scroll horizontal) */
 .category-filter {
   display: flex;
   gap: 10px;
@@ -52,21 +54,20 @@ body {
   padding-bottom: 15px;
   margin-bottom: 20px;
   -webkit-overflow-scrolling: touch;
-  scrollbar-width: none; /* Ocultar scrollbar Firefox */
+  scrollbar-width: none;
 }
 
 .category-filter::-webkit-scrollbar {
-  display: none; /* Ocultar scrollbar Chrome/Safari */
+  display: none;
 }
 
-/* Botones de Categoría */
 .category-btn {
   background: var(--color-card);
-  /* Usamos el color Greige para el borde, más suave que el gris #ddd */
-  border: 1px solid var(--color-secondary); 
+
+  border: 1px solid var(--color-secondary);
   padding: 8px 20px;
-  border-radius: 8px;   /* antes 50px */
-  font-weight: 600;     /* más firme */
+  border-radius: 8px;
+  font-weight: 600;
   font-size: 0.95rem;
   color: var(--color-text);
   cursor: pointer;
@@ -77,23 +78,23 @@ body {
 .category-btn:hover {
   border-color: var(--color-primary);
   color: var(--color-primary);
-  background-color: rgba(156, 89, 43, 0.05); /* Tinte muy suave al pasar mouse */
+  background-color: rgba(156, 89, 43, 0.05);
 }
 
 .category-btn.active {
   background-color: var(--color-primary);
   color: white;
   border-color: var(--color-primary);
-  box-shadow: 0 4px 10px rgba(46, 44, 36, 0.2); /* Sombra con tono tierra */
+  box-shadow: 0 4px 10px rgba(46, 44, 36, 0.2);
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   font-weight: 700;
   letter-spacing: 0.3px;
 }
 
-
-/* Responsive */
 @media (max-width: 640px) {
   .grid-products {
     grid-template-columns: repeat(2, 1fr);

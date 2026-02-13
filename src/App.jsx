@@ -1,12 +1,12 @@
 import { useState, useMemo } from "react";
 import { useCatalog } from "./hooks/useCatalog";
+import ContactSection from "./components/contactSection/contactSection";
 import Navbar from "./components/navBar/navBar";
 import ProductCard from "./components/productCard/productCard";
 import ProductModal from "./components/productModal/productModal";
 import HeroCarousel from "./components/heroCarousel/heroCarousel";
 import Footer from "./components/footer/footer";
 import FloatingWhatsApp from "./components/floatingWhatsApp/floatingWhatsApp";
-import MaterialsSection from "./components/materialSection/materialsSection";
 import { CLIENT_CONFIG } from "./config";
 
 function App() {
@@ -69,30 +69,36 @@ function App() {
       {/* Se muestra solo si no hay búsqueda y la categoría es "Todos" */}
       {selectedCategory === "Todos" && searchTerm === "" && (
         <>
-          <div style={{ textAlign: "center", marginBottom: "2rem", marginTop: "1rem" }}>
+          <div
+            style={{
+              textAlign: "center",
+              marginBottom: "2rem",
+              marginTop: "1rem",
+            }}
+          >
             <h1
               style={{
-                fontSize: "2.5rem",
+                fontSize: "clamp(1.8rem, 5vw, 3rem)",
                 marginBottom: "0.5rem",
                 color: "var(--color-primary)",
-                fontFamily: "Merriweather, serif" // Agregué la fuente serif aquí también
+                fontFamily: "Merriweather, serif",
+                lineHeight:
+                  "1.2",
+                padding:
+                  "0 10px",
               }}
             >
               {CLIENT_CONFIG.storeName}
             </h1>
-            <p style={{ color: "#666" }}>Diseño y calidad en madera</p>
+            <p style={{ color: "#666" }}>Diseños a medida</p>
           </div>
-          
+
           <div className="container">
             <HeroCarousel
               featuredProducts={featuredProducts}
               onSelect={setSelectedProduct}
             />
           </div>
-
-          {/* AQUÍ AGREGAMOS LA NUEVA SECCIÓN DE MATERIALES */}
-          <MaterialsSection />
-          
         </>
       )}
 
@@ -104,7 +110,7 @@ function App() {
             fontSize: "1.5rem",
             borderBottom: "1px solid #eee",
             paddingBottom: "10px",
-            color: "var(--color-text)"
+            color: "var(--color-text)",
           }}
         >
           {searchTerm ? `Resultados para: "${searchTerm}"` : "Nuestro Catálogo"}
@@ -185,6 +191,7 @@ function App() {
         />
       )}
 
+      <ContactSection />
       <Footer
         categories={categories}
         onCategorySelect={(cat) => {

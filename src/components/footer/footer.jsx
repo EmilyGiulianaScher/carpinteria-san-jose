@@ -10,7 +10,7 @@ const Footer = ({ categories, onCategorySelect }) => {
           <h3>{CLIENT_CONFIG.storeName}</h3>
           <p className={styles.text}>
             Fabricación artesanal • Diseños personalizados. Envíos a todo el país y atención
-            personalizada.
+            exclusiva.
           </p>
           <div className={styles.socialLinks}>
             {CLIENT_CONFIG.social.instagram && (
@@ -67,7 +67,6 @@ const Footer = ({ categories, onCategorySelect }) => {
           <h3>Contacto</h3>
           <p className={styles.text}>📍 {CLIENT_CONFIG.contact.address}</p>
           <p className={styles.text}>📞 {CLIENT_CONFIG.contact.phone}</p>
-          <p className={styles.text}>✉️ {CLIENT_CONFIG.contact.email}</p>
 
           {CLIENT_CONFIG.social.locationUrl && (
             <a
