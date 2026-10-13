@@ -2,6 +2,8 @@
 import { useState, useEffect } from 'react';
 import Papa from 'papaparse';
 import { CLIENT_CONFIG } from '../config';
+import { parsePrice } from '../utils/price';
+import { lineOf } from '../utils/lines';
 
 export const useCatalog = () => {
   const [products, setProducts] = useState([]);
@@ -49,6 +51,8 @@ export const useCatalog = () => {
           complete: (results) => {
             const cleanData = results.data
               .filter(item => item.ID && item.Nombre)
+              // La columna Mostrar_en_Web permite a los duenos ocultar un producto sin borrarlo.
+              .filter(item => item['Mostrar_en_Web']?.trim().toUpperCase() !== 'FALSE')
               .map(item => {
                 const img1 = getCleanImage(item['Foto_URL_1']);
                 const img2 = getCleanImage(item['Foto_URL_2']);
@@ -58,11 +62,12 @@ export const useCatalog = () => {
                   id: item['ID'],
                   name: item['Nombre'],
                   description: item['Descripción'],
-                  price: Number(item['Precio']),
+                  price: parsePrice(item['Precio']),
                   category: item['Categoría'],
                   isFeatured: item['carrusel']?.toUpperCase() === 'TRUE',
                   inStock: item['Disponible']?.toUpperCase() !== 'FALSE',
-                  oldPrice: Number(item['Precio_Anterior']) || 0,
+                  oldPrice: parsePrice(item['Precio_Anterior']),
+                  line: lineOf(item['Categoría']).id,
                   dimensions: item['Medidas'],
                   order: Number(item['Orden']) || 999,
                   coverImage: img1,

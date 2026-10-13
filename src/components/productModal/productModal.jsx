@@ -1,14 +1,13 @@
-import React, { useState, useEffect } from "react";
+import { useState } from "react";
 import styles from "./productModal.module.css";
+import { formatPrice } from "../../utils/price";
 import { CLIENT_CONFIG } from "../../config";
 
 const ProductModal = ({ product, allProducts, onClose, onSelect }) => {
-  if (!product) return null;
+  // El estado se reinicia solo: App monta el modal con key={product.id}.
+  const [activeImage, setActiveImage] = useState(product?.coverImage);
 
-  const [activeImage, setActiveImage] = useState(product.coverImage);
-  useEffect(() => {
-    setActiveImage(product.coverImage);
-  }, [product]);
+  if (!product) return null;
 
   const relatedProducts = allProducts
     ? allProducts
@@ -20,7 +19,7 @@ const ProductModal = ({ product, allProducts, onClose, onSelect }) => {
   const whatsappUrl = `https://wa.me/${CLIENT_CONFIG.whatsappNumber}?text=${encodeURIComponent(message)}`;
 
   return (
-    <div className={styles.overlay} onClick={onClose}>
+    <div className={styles.overlay} data-line={product.line} onClick={onClose}>
       <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
         <button className={styles.closeButton} onClick={onClose}>
           &times;
@@ -56,7 +55,7 @@ const ProductModal = ({ product, allProducts, onClose, onSelect }) => {
             <div className={styles.category}>{product.category}</div>
             <h2 className={styles.title}>{product.name}</h2>
             <div className={styles.price}>
-              ${product.price.toLocaleString()}
+              {formatPrice(product.price)}
             </div>
             <p className={styles.description}>
               {product.description || "Sin descripción."}
@@ -98,7 +97,7 @@ const ProductModal = ({ product, allProducts, onClose, onSelect }) => {
                     <div>
                       <p className={styles.relatedName}>{rel.name}</p>
                       <span className={styles.relatedPrice}>
-                        ${rel.price.toLocaleString()}
+                        {formatPrice(rel.price)}
                       </span>
                     </div>
                   </div>

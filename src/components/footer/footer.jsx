@@ -1,8 +1,9 @@
 import React from "react";
 import styles from "./footer.module.css";
 import { CLIENT_CONFIG } from "../../config";
+import { LINES } from "../../utils/lines";
 
-const Footer = ({ categories, onCategorySelect }) => {
+const Footer = () => {
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
@@ -44,22 +45,11 @@ const Footer = ({ categories, onCategorySelect }) => {
 
         <div className={styles.column}>
           <h3>Categorías</h3>
-          {categories.slice(0, 5).map(
-            (cat) =>
-              cat !== "Todos" && (
-                <span
-                  key={cat}
-                  className={styles.link}
-                  onClick={() => {
-                    onCategorySelect(cat);
-                    window.scrollTo({ top: 0, behavior: "smooth" });
-                  }}
-                  style={{ cursor: "pointer" }}
-                >
-                  {cat}
-                </span>
-              ),
-          )}
+          {LINES.map((line) => (
+            <a key={line.id} href={`#${line.id}`} className={styles.link}>
+              {line.title}
+            </a>
+          ))}
         </div>
 
         <div className={styles.column}>

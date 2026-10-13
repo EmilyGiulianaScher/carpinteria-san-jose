@@ -1,91 +1,58 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import styles from "./navBar.module.css";
 import { CLIENT_CONFIG } from "../../config";
+import { LINES } from "../../utils/lines";
 
-const Navbar = ({ categories, onCategorySelect, onSearch, searchTerm }) => {
+const Navbar = ({ onSearch, searchTerm }) => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   return (
-    <nav className={styles.navbar}>
-      <div
-        className={styles.logoContainer}
-        onClick={() => onCategorySelect("Todos")}
-      >
+    <nav className={styles.navbar} aria-label="Principal">
+      <a href="#inicio" className={styles.brand}>
         {CLIENT_CONFIG.logoUrl && (
-          <img src={CLIENT_CONFIG.logoUrl} alt="Logo" className={styles.logo} />
+          <img src={CLIENT_CONFIG.logoUrl} alt="" className={styles.logo} />
         )}
-        <span className={styles.brandName}>{CLIENT_CONFIG.storeName}</span>
-      </div>
+        <span>{CLIENT_CONFIG.storeName}</span>
+      </a>
 
-      <div
-        className={`${styles.navLinks} ${isSearchOpen ? styles.hiddenOnMobile : ""}`}
-      >
+      <ul className={`${styles.links} ${isSearchOpen ? styles.hidden : ""}`}>
+        {LINES.map((line) => (
+          <li key={line.id}>
+            <a href={`#${line.id}`} className={styles.link}>
+              {line.title}
+            </a>
+          </li>
+        ))}
+        <li>
+          <a href="#contacto" className={styles.link}>
+            Contacto
+          </a>
+        </li>
+      </ul>
+
+      <div className={styles.search}>
+        {isSearchOpen && (
+          <input
+            type="search"
+            placeholder="Buscar productos"
+            aria-label="Buscar productos"
+            className={styles.searchInput}
+            value={searchTerm}
+            onChange={(e) => onSearch(e.target.value)}
+            autoFocus
+          />
+        )}
         <button
-          className={styles.link}
+          type="button"
+          className={styles.searchButton}
+          aria-label={isSearchOpen ? "Cerrar búsqueda" : "Buscar productos"}
           onClick={() => {
-            onCategorySelect("Todos");
-            onSearch("");
+            if (isSearchOpen) onSearch("");
+            setIsSearchOpen(!isSearchOpen);
           }}
         >
-          Inicio
+          {isSearchOpen ? "✕" : "🔍"}
         </button>
-
-        <div className={`${styles.dropdown} ${styles.link}`}>
-          <span>Productos ▾</span>
-          <div className={styles.dropdownContent}>
-            <button
-              className={styles.dropdownItem}
-              onClick={() => onCategorySelect("Todos")}
-            >
-              Ver Todos
-            </button>
-            {categories.map(
-              (cat) =>
-                cat !== "Todos" && (
-                  <button
-                    key={cat}
-                    className={styles.dropdownItem}
-                    onClick={() => onCategorySelect(cat)}
-                  >
-                    {cat}
-                  </button>
-                ),
-            )}
-          </div>
-        </div>
-      </div>
-
-      <div
-        className={`${styles.searchContainer} ${isSearchOpen ? styles.searchActive : ""}`}
-      >
-        <input
-          type="text"
-          placeholder="Buscar..."
-          className={styles.searchInput}
-          value={searchTerm}
-          onChange={(e) => onSearch(e.target.value)}
-        />
-
-        {!isSearchOpen && (
-          <button
-            className={styles.searchToggleBtn}
-            onClick={() => setIsSearchOpen(true)}
-          >
-            🔍
-          </button>
-        )}
-
-        {isSearchOpen && (
-          <button
-            className={styles.closeSearchBtn}
-            onClick={() => {
-              setIsSearchOpen(false);
-              onSearch("");
-            }}
-          >
-            ✕
-          </button>
-        )}
       </div>
     </nav>
   );

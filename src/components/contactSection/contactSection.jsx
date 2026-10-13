@@ -24,7 +24,7 @@ const ContactSection = () => {
   };
 
   return (
-    <section className={styles.contactSection}>
+    <section id="contacto" className={styles.contactSection}>
       <div className={styles.container}>
         <div className={styles.textColumn}>
           <span className={styles.overline}>HABLEMOS</span>

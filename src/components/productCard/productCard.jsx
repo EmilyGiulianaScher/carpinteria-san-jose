@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './productCard.module.css';
+import { formatPrice } from "../../utils/price";
 
 const ProductCard = ({ product }) => {
   const { name, price, oldPrice, inStock, coverImage, category } = product;
@@ -35,12 +36,12 @@ const ProductCard = ({ product }) => {
         
         <div className={styles.priceContainer}>
           <span className={styles.price}>
-            ${price.toLocaleString()}
+            {formatPrice(price)}
           </span>
           
           {hasDiscount && (
             <span className={styles.oldPrice}>
-              ${oldPrice.toLocaleString()}
+              {formatPrice(oldPrice)}
             </span>
           )}
         </div>
