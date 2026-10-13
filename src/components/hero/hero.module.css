@@ -1,112 +1,160 @@
 .hero {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  min-height: min(calc(100svh - 64px), 900px);
-}
-
-.srOnly {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  white-space: nowrap;
-}
-
-.panel {
   position: relative;
+  overflow: hidden;
+  padding: 36px clamp(20px, 5vw, 64px) 0;
+  background: var(--color-bg);
+}
+
+/* Nombre en letras enormes: es lo primero que se lee. */
+.name {
+  position: relative;
+  z-index: 0;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  overflow: hidden;
-  background: var(--l-bg);
-  color: var(--l-text);
-  text-decoration: none;
-  min-height: 420px;
+  margin: 0;
+  font-family: "Merriweather", Georgia, serif;
+  font-weight: 900;
+  font-size: clamp(2.6rem, 10.5vw, 9.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: var(--color-text);
 }
 
-.photo {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.6s ease;
-}
-
-.panel:hover .photo,
-.panel:focus-visible .photo {
-  transform: scale(1.04);
-}
-
-/* Velo para que el texto se lea sobre cualquier foto. */
-.panel::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  background: linear-gradient(to top, var(--l-bg) 8%, transparent 70%);
-  opacity: 0.92;
+.body {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(260px, 1fr) minmax(0, 1.25fr);
+  align-items: end;
+  gap: 24px;
+  /* La foto sube y se superpone a las letras, como en la referencia. */
+  margin-top: clamp(-9rem, -9vw, -2rem);
 }
 
 .text {
   position: relative;
   z-index: 2;
-  padding: 40px clamp(24px, 5vw, 64px);
+  align-self: center;
+  padding-bottom: 48px;
 }
 
 .kicker {
-  margin: 0 0 8px;
-  font-family: var(--l-body-font);
+  margin: 0 0 12px;
+  font-family: "Jost", sans-serif;
   font-size: 0.85rem;
-  color: var(--l-muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-primary);
 }
 
-.title {
-  margin: 0;
-  font-family: var(--l-heading-font);
-  font-weight: var(--l-heading-weight);
-  font-size: clamp(2.4rem, 5vw, 4rem);
-  line-height: 1.05;
-}
-
-.tagline {
-  margin: 12px 0 24px;
-  max-width: 28ch;
-  font-family: var(--l-body-font);
-  color: var(--l-muted);
+.lead {
+  margin: 0 0 28px;
+  max-width: 32ch;
+  font-size: 1.1rem;
+  line-height: 1.6;
 }
 
 .cta {
   display: inline-block;
-  padding: 12px 28px;
-  border: var(--l-border-width) solid var(--l-accent);
-  border-radius: var(--l-radius);
-  font-family: var(--l-body-font);
+  padding: 14px 32px;
+  background: var(--color-text);
+  color: var(--color-bg);
+  font-family: "Jost", sans-serif;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+.cta:hover,
+.cta:focus-visible {
+  background: var(--color-primary);
+}
+
+/* "multiply" hace que el fondo blanco de la foto se funda con el color de la pagina. */
+.photo {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-height: 560px;
+  object-fit: contain;
+  object-position: center bottom;
+  mix-blend-mode: multiply;
+}
+
+/* Franja oscura con las dos lineas */
+.strip {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background: #2a1d14;
+}
+
+.tile {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 22px clamp(20px, 4vw, 48px);
+  color: #f4e9d9;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+.strip li + li .tile {
+  border-left: 1px solid #4a3425;
+}
+
+.tile:hover,
+.tile:focus-visible {
+  background: #3a281b;
+}
+
+.thumb {
+  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+}
+
+.tileText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+
+.tileTitle {
+  font-family: "Merriweather", serif;
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+.tileTagline {
+  font-family: "Jost", sans-serif;
+  font-size: 0.85rem;
+  color: #cdb8a0;
+}
+
+.tileCta {
+  font-family: "Jost", sans-serif;
   font-size: 0.9rem;
-  color: var(--l-text);
-  transition:
-    background-color 0.2s,
-    color 0.2s;
-}
-
-.panel:hover .cta,
-.panel:focus-visible .cta {
-  background: var(--l-accent);
-  color: var(--l-on-accent);
-}
-
-.panel:focus-visible {
-  outline: 3px solid var(--l-accent);
-  outline-offset: -6px;
+  color: #d39a68;
 }
 
 @media (max-width: 760px) {
-  .hero {
+  .body {
     grid-template-columns: 1fr;
-    min-height: auto;
+    margin-top: 0;
   }
-  .panel {
-    min-height: 62vh;
+  .text {
+    padding-bottom: 8px;
+  }
+  .strip {
+    grid-template-columns: 1fr;
+  }
+  .strip li + li .tile {
+    border-left: 0;
+    border-top: 1px solid #4a3425;
   }
 }

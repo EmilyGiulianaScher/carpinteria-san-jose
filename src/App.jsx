@@ -1,8 +1,9 @@
-import { useMemo, useState } from "react";
+import { Fragment, useMemo, useState } from "react";
 import { useCatalog } from "./hooks/useCatalog";
 import ContactSection from "./components/contactSection/contactSection";
 import Navbar from "./components/navBar/navBar";
 import Hero from "./components/hero/hero";
+import AboutSection from "./components/aboutSection/aboutSection";
 import LineSection from "./components/lineSection/lineSection";
 import ProductModal from "./components/productModal/productModal";
 import Footer from "./components/footer/footer";
@@ -19,6 +20,9 @@ function App() {
     return term ? products.filter((p) => p.name.toLowerCase().includes(term)) : products;
   }, [products, searchTerm]);
 
+  const furniture = products.filter((p) => p.line === "muebles");
+  const aboutImage = (furniture[1] ?? furniture[0])?.coverImage;
+
   if (loading) {
     return <div style={{ textAlign: "center", marginTop: 50 }}>Cargando catálogo...</div>;
   }
@@ -34,12 +38,17 @@ function App() {
       {searchTerm.trim() === "" && <Hero products={products} />}
 
       {LINES.map((line) => (
-        <LineSection
-          key={line.id}
-          line={line}
-          products={visibleProducts.filter((p) => p.line === line.id)}
-          onSelect={setSelectedProduct}
-        />
+        <Fragment key={line.id}>
+          <LineSection
+            line={line}
+            products={visibleProducts.filter((p) => p.line === line.id)}
+            onSelect={setSelectedProduct}
+          />
+          {/* Sobre nosotros va entre Muebles (el foco) y Hogar. */}
+          {line.id === "muebles" && searchTerm.trim() === "" && (
+            <AboutSection image={aboutImage} />
+          )}
+        </Fragment>
       ))}
 
       {visibleProducts.length === 0 && (
