@@ -4,38 +4,31 @@ import ProductCard from "../productCard/productCard";
 const RIBBON_TEXT = "ENVÍOS A TODO EL PAÍS • DISEÑOS A MEDIDA • ";
 
 /**
- * Cinta decorativa entre el titulo y los productos. En Hogar es una onda con el texto que la
- * recorre; en Muebles es una franja recta y mas pesada. Es solo decoracion (aria-hidden).
+ * Cinta ondulada decorativa entre el titulo y los productos (la misma forma en las dos lineas;
+ * cambia el color segun la linea). Es solo decoracion (aria-hidden).
  */
 const Ribbon = ({ lineId }) => {
   const text = RIBBON_TEXT.repeat(8);
-
-  if (lineId === "hogar") {
-    return (
-      <svg
-        className={styles.ribbonWave}
-        viewBox="0 0 1440 120"
-        preserveAspectRatio="none"
-        aria-hidden="true"
-      >
-        <path
-          id="hogar-wave"
-          d="M-20 62 C 200 28, 420 28, 640 62 S 1080 96, 1300 62 S 1500 34, 1560 52"
-          fill="none"
-          stroke="var(--l-accent)"
-          strokeWidth="46"
-        />
-        <text className={styles.waveText} dy="6">
-          <textPath href="#hogar-wave">{text}</textPath>
-        </text>
-      </svg>
-    );
-  }
+  const pathId = `${lineId}-wave`;
 
   return (
-    <div className={styles.ribbonBand} aria-hidden="true">
-      <span>{text}</span>
-    </div>
+    <svg
+      className={styles.ribbonWave}
+      viewBox="0 0 1440 120"
+      preserveAspectRatio="none"
+      aria-hidden="true"
+    >
+      <path
+        id={pathId}
+        d="M-20 62 C 200 28, 420 28, 640 62 S 1080 96, 1300 62 S 1500 34, 1560 52"
+        fill="none"
+        stroke="var(--l-accent)"
+        strokeWidth="46"
+      />
+      <text className={styles.waveText} dy="6">
+        <textPath href={`#${pathId}`}>{text}</textPath>
+      </text>
+    </svg>
   );
 };
 

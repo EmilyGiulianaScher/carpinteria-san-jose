@@ -3,7 +3,8 @@
   margin: 0 auto;
   padding: 0 20px;
   /* La tarjeta sube y se apoya sobre el final de la portada. */
-  margin-top: -40px;
+  margin: -40px auto 0;
+  padding-bottom: 64px;
   position: relative;
   z-index: 2;
 }

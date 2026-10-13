@@ -1,16 +1,20 @@
 .navbar {
   position: sticky;
-  top: 0;
+  top: 12px;
   z-index: 50;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-  height: 64px;
-  padding: 0 clamp(16px, 4vw, 48px);
-  background: rgba(244, 233, 217, 0.88);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(95, 67, 46, 0.2);
+  height: 60px;
+  max-width: 1200px;
+  margin: 12px auto 0;
+  padding: 0 14px 0 24px;
+  border: 1px solid rgba(95, 67, 46, 0.14);
+  border-radius: 999px;
+  background: rgba(255, 250, 242, 0.88);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 28px rgba(46, 44, 36, 0.08);
   font-family: "Jost", system-ui, sans-serif;
 }
 
@@ -77,6 +81,17 @@
 }
 
 @media (max-width: 640px) {
+  .navbar {
+    margin: 10px 12px 0;
+    gap: 8px;
+    padding: 0 6px 0 16px;
+  }
+  .links {
+    gap: 14px;
+  }
+  .link {
+    font-size: 0.85rem;
+  }
   .brand span {
     display: none;
   }

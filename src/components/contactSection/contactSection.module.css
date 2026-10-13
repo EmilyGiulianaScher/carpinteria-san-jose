@@ -29,8 +29,9 @@
 }
 
 .title {
-  font-family: "Merriweather", serif;
-  font-size: 3rem;
+  font-family: "Jost", system-ui, sans-serif;
+  font-weight: 500;
+  font-size: 2.8rem;
   color: var(--color-text);
   margin: 0 0 1.5rem 0;
   line-height: 1.1;

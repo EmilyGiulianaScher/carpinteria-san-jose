@@ -4,7 +4,6 @@ import ContactSection from "./components/contactSection/contactSection";
 import Navbar from "./components/navBar/navBar";
 import Hero from "./components/hero/hero";
 import Features from "./components/features/features";
-import Categories from "./components/categories/categories";
 import AboutSection from "./components/aboutSection/aboutSection";
 import LineSection from "./components/lineSection/lineSection";
 import ProductModal from "./components/productModal/productModal";
@@ -39,9 +38,8 @@ function App() {
       {/* Con una busqueda activa se muestran solo los resultados, agrupados por linea. */}
       {searchTerm.trim() === "" && (
         <>
-          <Hero products={products} />
+          <Hero products={products} onSelect={setSelectedProduct} />
           <Features />
-          <Categories products={products} />
         </>
       )}
 

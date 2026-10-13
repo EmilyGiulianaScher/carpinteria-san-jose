@@ -29,7 +29,7 @@
   padding: 0 20px;
 }
 
-/* Cinta ondulada (Hogar) */
+/* Cinta ondulada */
 .ribbonWave {
   display: block;
   width: 100%;
@@ -43,20 +43,6 @@
   font-size: 15px;
   letter-spacing: 3px;
   fill: var(--l-on-accent);
-}
-
-/* Franja recta (Muebles) */
-.ribbonBand {
-  margin: 36px 0 40px;
-  padding: 14px 0;
-  overflow: hidden;
-  white-space: nowrap;
-  background: var(--l-accent);
-  color: var(--l-on-accent);
-  font-family: "Merriweather", serif;
-  font-weight: 700;
-  font-size: 0.85rem;
-  letter-spacing: 3px;
 }
 
 .grid {

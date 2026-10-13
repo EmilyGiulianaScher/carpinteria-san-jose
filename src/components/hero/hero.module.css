@@ -1,41 +1,50 @@
 .hero {
-  position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-  align-items: stretch;
-  min-height: min(76vh, 640px);
-  padding-bottom: 56px;
-  background: var(--color-bg);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  align-items: center;
+  gap: clamp(32px, 6vw, 88px);
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: clamp(24px, 4vw, 48px) 20px clamp(72px, 8vw, 104px);
 }
 
-.text {
-  position: relative;
-  z-index: 2;
-  align-self: center;
-  max-width: 640px;
-  justify-self: end;
-  padding: 48px clamp(20px, 4vw, 56px) 48px clamp(20px, 6vw, 96px);
+.kicker {
+  display: inline-block;
+  margin: 0 0 20px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: var(--color-sage);
+  color: var(--color-green);
+  font-family: "Jost", sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
 }
 
 .title {
-  margin: 0 0 20px;
+  margin: 0 0 18px;
   font-family: "Jost", system-ui, sans-serif;
   font-weight: 500;
-  font-size: clamp(2rem, 3.7vw, 3.2rem);
-  line-height: 1.1;
+  font-size: clamp(2.1rem, 4.2vw, 3.5rem);
+  line-height: 1.08;
   letter-spacing: -0.015em;
   color: var(--color-text);
 }
 
 .title span {
   display: block;
-  white-space: nowrap;
 }
 
 .lead {
-  margin: 0 0 32px;
+  margin: 0 0 30px;
   max-width: 36ch;
   line-height: 1.65;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
 }
 
 .cta {
@@ -66,48 +75,137 @@
   background: var(--color-primary);
 }
 
-/* Panel del tronco; el mueble se extiende hacia la izquierda, sobre el texto. */
-.visual {
-  position: relative;
-  min-height: 420px;
+.secondary {
+  padding: 14px 26px;
+  border: 1px solid rgba(95, 67, 46, 0.4);
+  border-radius: 999px;
+  color: var(--color-text);
+  font-family: "Jost", sans-serif;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition:
+    background-color 0.2s,
+    border-color 0.2s;
 }
 
-.log {
-  position: absolute;
-  inset: 0;
+.secondary:hover,
+.secondary:focus-visible {
+  border-color: var(--color-green);
+  background: var(--color-sage);
+}
+
+/* Miniaturas: abren el producto */
+.thumbs {
+  display: flex;
+  gap: 12px;
+  margin: 36px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.thumb {
+  display: block;
+  width: 72px;
+  height: 72px;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid rgba(95, 67, 46, 0.2);
+  border-radius: 16px;
+  background: #fffaf2;
+  cursor: pointer;
+  transition:
+    border-color 0.2s,
+    transform 0.2s;
+}
+
+.thumb:hover,
+.thumb:focus-visible {
+  border-color: var(--color-green);
+  transform: translateY(-2px);
+}
+
+.thumb img {
   width: 100%;
   height: 100%;
+  object-fit: cover;
 }
 
-/* "darken" deja pasar el fondo (crema o tronco) donde la foto es blanca y conserva el mueble donde es mas oscuro. */
+/* Panel del mueble destacado */
+.panel {
+  position: relative;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 6 / 5;
+  overflow: hidden;
+  border-radius: 32px;
+  background:
+    radial-gradient(circle at 28% 22%, rgba(255, 255, 255, 0.6), transparent 55%),
+    linear-gradient(150deg, #ecdcc3, #dcc09c);
+}
+
+/* "multiply" funde el fondo blanco de la foto con el color del panel. */
 .photo {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  z-index: 1;
-  width: 128%;
-  max-width: none;
-  max-height: 86%;
-  transform: translate(-16%, -50%);
+  width: 94%;
+  height: 94%;
   object-fit: contain;
-  mix-blend-mode: darken;
+  mix-blend-mode: multiply;
 }
 
-@media (max-width: 760px) {
+.chip {
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 10px 10px 10px 18px;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(255, 250, 242, 0.92);
+  box-shadow: 0 10px 28px rgba(46, 44, 36, 0.14);
+  color: var(--color-text);
+  font-family: "Jost", sans-serif;
+  text-align: left;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.chip:hover,
+.chip:focus-visible {
+  transform: translateY(-2px);
+}
+
+.chipText {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+
+.chipName {
+  font-weight: 500;
+}
+
+.chipPrice {
+  font-size: 0.85rem;
+  color: #6b5a4a;
+}
+
+.chipIcon {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--color-green);
+  color: #f4efe3;
+}
+
+@media (max-width: 860px) {
   .hero {
     grid-template-columns: 1fr;
-    min-height: 0;
-    padding-bottom: 40px;
+    padding-bottom: 72px;
   }
-  .text {
-    justify-self: stretch;
-    padding: 36px 20px 28px;
-  }
-  .visual {
-    min-height: 320px;
-  }
-  .photo {
-    width: 100%;
-    transform: translate(0, -50%);
+  .panel {
+    aspect-ratio: 4 / 3;
   }
 }
