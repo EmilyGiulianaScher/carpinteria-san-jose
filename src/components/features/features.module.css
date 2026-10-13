@@ -3,7 +3,7 @@
   margin: 0 auto;
   padding: 0 20px;
   /* La tarjeta sube y se apoya sobre el final de la portada. */
-  margin-top: clamp(-80px, -6vw, -40px);
+  margin-top: -40px;
   position: relative;
   z-index: 2;
 }
@@ -40,8 +40,8 @@
   height: 52px;
   margin-bottom: 6px;
   border-radius: 50%;
-  background: #f1e0cb;
-  color: var(--color-primary);
+  background: var(--color-sage);
+  color: var(--color-green);
 }
 
 .title {

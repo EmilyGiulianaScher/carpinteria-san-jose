@@ -1,69 +1,40 @@
 .hero {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  align-items: center;
-  gap: clamp(24px, 5vw, 80px);
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: clamp(32px, 6vw, 72px) 20px clamp(64px, 8vw, 96px);
-}
-
-/* Circulo de color con el mueble encima, que se sale un poco por abajo. */
-.visual {
   position: relative;
   display: grid;
-  place-items: center;
-  aspect-ratio: 1 / 1;
-  max-width: 520px;
-  width: 100%;
-  justify-self: center;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  align-items: stretch;
+  min-height: min(76vh, 640px);
+  padding-bottom: 56px;
+  background: var(--color-bg);
 }
 
-.circle {
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  background: #e2bf9f;
-}
-
-/* "multiply" funde el fondo blanco de la foto con el color del circulo. */
-.photo {
+.text {
   position: relative;
-  width: 112%;
-  max-width: none;
-  max-height: 80%;
-  object-fit: contain;
-  mix-blend-mode: multiply;
-}
-
-.kicker {
-  margin: 0 0 12px;
-  font-family: "Jost", sans-serif;
-  font-size: 0.85rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--color-primary);
+  z-index: 2;
+  align-self: center;
+  max-width: 640px;
+  justify-self: end;
+  padding: 48px clamp(20px, 4vw, 56px) 48px clamp(20px, 6vw, 96px);
 }
 
 .title {
-  margin: 0 0 16px;
-  font-family: "Cormorant Garamond", Georgia, serif;
+  margin: 0 0 20px;
+  font-family: "Jost", system-ui, sans-serif;
   font-weight: 500;
-  font-size: clamp(2.4rem, 5vw, 4rem);
-  line-height: 1.05;
-  letter-spacing: -0.01em;
+  font-size: clamp(2rem, 3.7vw, 3.2rem);
+  line-height: 1.1;
+  letter-spacing: -0.015em;
   color: var(--color-text);
 }
 
-.title em {
+.title span {
   display: block;
-  font-style: italic;
-  color: var(--color-primary);
+  white-space: nowrap;
 }
 
 .lead {
-  margin: 0 0 28px;
-  max-width: 38ch;
+  margin: 0 0 32px;
+  max-width: 36ch;
   line-height: 1.65;
 }
 
@@ -73,8 +44,8 @@
   gap: 14px;
   padding: 8px 8px 8px 28px;
   border-radius: 999px;
-  background: var(--color-text);
-  color: var(--color-bg);
+  background: var(--color-green);
+  color: #f4efe3;
   font-family: "Jost", sans-serif;
   font-size: 0.95rem;
   text-decoration: none;
@@ -86,7 +57,7 @@
   place-items: center;
   width: 36px;
   height: 36px;
-  border: 1px solid rgba(244, 233, 217, 0.5);
+  border: 1px solid rgba(244, 239, 227, 0.5);
   border-radius: 50%;
 }
 
@@ -95,12 +66,48 @@
   background: var(--color-primary);
 }
 
+/* Panel del tronco; el mueble se extiende hacia la izquierda, sobre el texto. */
+.visual {
+  position: relative;
+  min-height: 420px;
+}
+
+.log {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* "darken" deja pasar el fondo (crema o tronco) donde la foto es blanca y conserva el mueble donde es mas oscuro. */
+.photo {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  z-index: 1;
+  width: 128%;
+  max-width: none;
+  max-height: 86%;
+  transform: translate(-16%, -50%);
+  object-fit: contain;
+  mix-blend-mode: darken;
+}
+
 @media (max-width: 760px) {
   .hero {
     grid-template-columns: 1fr;
-    text-align: center;
+    min-height: 0;
+    padding-bottom: 40px;
   }
-  .lead {
-    margin-inline: auto;
+  .text {
+    justify-self: stretch;
+    padding: 36px 20px 28px;
+  }
+  .visual {
+    min-height: 320px;
+  }
+  .photo {
+    width: 100%;
+    transform: translate(0, -50%);
   }
 }

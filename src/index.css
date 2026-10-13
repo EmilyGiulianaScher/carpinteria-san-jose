@@ -7,6 +7,8 @@
   --color-card: #ffffff;
   --color-text: #2e2c24;
   --color-secondary: #af754f;
+  --color-green: #2f4a3a; /* Verde bosque: acento secundario; el marron sigue siendo el principal */
+  --color-sage: #dfe7da;
   --color-danger: #ef4444;
 }
 
@@ -34,7 +36,7 @@
   --l-surface: #f3ead8;
   --l-text: #4a3a2c;
   --l-muted: #7a6650;
-  --l-accent: #8a6a47;
+  --l-accent: #4d6b57;
   --l-border: #d9c9ae;
   --l-on-accent: #fbf6ea;
   --l-heading-font: "Cormorant Garamond", Georgia, serif;

@@ -5,11 +5,9 @@ import { LINES } from "../../utils/lines";
 /** "Explorá por línea": una tarjeta con foto por cada línea y la cantidad de productos. */
 const Categories = ({ products }) => (
   <section className={styles.section} aria-labelledby="lineas-title">
-    <div className={styles.head}>
-      <h2 id="lineas-title" className={styles.title}>
-        Explorá por línea
-      </h2>
-    </div>
+    <h2 id="lineas-title" className={styles.title}>
+      Explorá por línea
+    </h2>
 
     <ul className={styles.grid}>
       {LINES.map((line) => {
