@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
-import styles from './floatingWhatsApp.module.css';
-import { CLIENT_CONFIG } from '../../config';
+import { useState } from "react";
+import { X } from "lucide-react";
+import styles from "./floatingWhatsApp.module.css";
+import { CLIENT_CONFIG } from "../../config";
 
 const FloatingWhatsApp = () => {
   const [showWelcome, setShowWelcome] = useState(true);
@@ -14,9 +15,9 @@ const FloatingWhatsApp = () => {
       {showWelcome && (
         <div className={styles.messageBubble}>
           <div className={styles.messageHeader}>
-            <span>👋 ¡Hola!</span>
-            <button 
-              onClick={() => setShowWelcome(false)} 
+            <span>¡Hola!</span>
+            <button
+              onClick={() => setShowWelcome(false)}
               className={styles.closeBtn}
               title="Minimizar chat"
             >
@@ -26,20 +27,16 @@ const FloatingWhatsApp = () => {
           <p className={styles.messageText}>¿Necesitas ayuda con tu pedido?</p>
         </div>
       )}
-      <a 
-        href={whatsappUrl} 
-        target="_blank" 
+      <a
+        href={whatsappUrl}
+        target="_blank"
         rel="noopener noreferrer"
-        className={`${styles.floatBtn} ${!showWelcome ? styles.minimized : ''}`}
+        className={`${styles.floatBtn} ${!showWelcome ? styles.minimized : ""}`}
         onClick={() => setShowWelcome(true)}
         title="Chatear por WhatsApp"
       >
-        <img 
-          src="/whatsapp (1).png" 
-          alt="WhatsApp" 
-          className={styles.icon} 
-        />
-        
+        <img src="/whatsapp (1).png" alt="WhatsApp" className={styles.icon} />
+
         {showWelcome && <span className={styles.btnText}>Chatear</span>}
       </a>
     </div>

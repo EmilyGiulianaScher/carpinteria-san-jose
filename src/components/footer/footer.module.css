@@ -1,81 +1,127 @@
 .footer {
-  background-color: var(--color-primary);
-  color: #f3f4f6;
-  padding: 60px 20px 20px 20px;
-  margin-top: 60px;
+  background: #2a1d14;
+  color: #e9dcc9;
+  padding: 64px 20px 24px;
+  font-family: "Jost", system-ui, sans-serif;
 }
 
 .container {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1.2fr;
+  gap: 48px;
   max-width: 1200px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 40px;
   padding-bottom: 40px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(233, 220, 201, 0.14);
 }
 
-.column h3 {
-  color: white;
-  font-size: 1.2rem;
-  margin-bottom: 20px;
-  position: relative;
-}
-
-.column h3::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -8px;
-  width: 40px;
-  height: 3px;
-  background-color: var(--color-primary);
-  border-radius: 2px;
+.name {
+  margin: 0 0 14px;
+  font-family: "Merriweather", serif;
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: #f6ecdc;
 }
 
 .text {
-  color: white;
-  line-height: 1.6;
-  margin-bottom: 10px;
-  font-size: 0.95rem;
-  display: block;
-  text-decoration: none;
+  max-width: 36ch;
+  margin: 0;
+  line-height: 1.7;
+  color: #cdb8a0;
+}
+
+.heading {
+  margin: 0 0 18px;
+  font-family: "Jost", sans-serif;
+  font-weight: 500;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #d39a68;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .link {
-  color: white;
+  padding: 5px 0;
+  color: #e9dcc9;
   text-decoration: none;
   transition: color 0.2s;
-  display: block;
-  margin-bottom: 8px;
 }
 
-.link:hover {
-  color: var(--color-text);
-  padding-left: 5px;
+.link:hover,
+.link:focus-visible {
+  color: #d39a68;
+}
+
+.contactList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.contactList li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  line-height: 1.5;
+}
+
+.contactList svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: #d39a68;
+}
+
+.mapLink {
+  display: inline-block;
+  margin-top: 16px;
+  padding: 8px 18px;
+  border: 1px solid rgba(233, 220, 201, 0.35);
+  border-radius: 999px;
+  color: #f6ecdc;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition:
+    background-color 0.2s,
+    border-color 0.2s;
+}
+
+.mapLink:hover,
+.mapLink:focus-visible {
+  border-color: var(--color-green);
+  background: var(--color-green);
 }
 
 .socialLinks {
   display: flex;
-  gap: 15px;
-  margin-top: 15px;
+  gap: 12px;
+  margin-top: 22px;
 }
 
 .socialBtn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 40px;
-  height: 40px;
-  background-color: rgba(255, 255, 255, 0.1);
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(233, 220, 201, 0.25);
   border-radius: 50%;
-  transition: all 0.3s ease;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition:
+    background-color 0.2s,
+    border-color 0.2s;
 }
 
-.socialBtn:hover {
-  background-color: var(--color-primary);
-  transform: translateY(-3px);
+.socialBtn:hover,
+.socialBtn:focus-visible {
+  border-color: var(--color-green);
+  background: var(--color-green);
 }
 
 .socialIcon {
@@ -85,8 +131,33 @@
 }
 
 .copyright {
-  text-align: center;
-  padding-top: 20px;
-  color: rgb(201, 199, 199);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-top: 24px;
   font-size: 0.85rem;
+  color: #a8957e;
+}
+
+.credit {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.heart {
+  color: #d39a68;
+}
+
+@media (max-width: 760px) {
+  .container {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+  .copyright {
+    flex-direction: column;
+  }
 }

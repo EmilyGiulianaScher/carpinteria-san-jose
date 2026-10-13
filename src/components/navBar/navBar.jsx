@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Search, X } from "lucide-react";
 import styles from "./navBar.module.css";
 import { CLIENT_CONFIG } from "../../config";
 import { LINES } from "../../utils/lines";
@@ -56,7 +57,11 @@ const Navbar = ({ onSearch, searchTerm }) => {
             setIsSearchOpen(!isSearchOpen);
           }}
         >
-          {isSearchOpen ? "✕" : "🔍"}
+          {isSearchOpen ? (
+            <X size={20} aria-hidden="true" />
+          ) : (
+            <Search size={20} aria-hidden="true" />
+          )}
         </button>
       </div>
     </nav>

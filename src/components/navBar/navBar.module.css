@@ -72,12 +72,21 @@
 }
 
 .searchButton {
+  display: grid;
+  place-items: center;
   width: 40px;
   height: 40px;
   border: 0;
+  border-radius: 50%;
   background: none;
-  font-size: 1.1rem;
+  color: var(--color-primary);
   cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.searchButton:hover,
+.searchButton:focus-visible {
+  background: var(--color-sage);
 }
 
 @media (max-width: 640px) {

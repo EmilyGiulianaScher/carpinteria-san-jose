@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { X } from "lucide-react";
 import styles from "./productModal.module.css";
 import { formatPrice } from "../../utils/price";
 import { CLIENT_CONFIG } from "../../config";
@@ -21,8 +22,12 @@ const ProductModal = ({ product, allProducts, onClose, onSelect }) => {
   return (
     <div className={styles.overlay} data-line={product.line} onClick={onClose}>
       <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
-        <button className={styles.closeButton} onClick={onClose}>
-          &times;
+        <button
+          className={styles.closeButton}
+          onClick={onClose}
+          aria-label="Cerrar"
+        >
+          <X size={20} aria-hidden="true" />
         </button>
 
         {/* COLUMNA IZQ: FOTOS */}
@@ -54,9 +59,7 @@ const ProductModal = ({ product, allProducts, onClose, onSelect }) => {
           <div>
             <div className={styles.category}>{product.category}</div>
             <h2 className={styles.title}>{product.name}</h2>
-            <div className={styles.price}>
-              {formatPrice(product.price)}
-            </div>
+            <div className={styles.price}>{formatPrice(product.price)}</div>
             <p className={styles.description}>
               {product.description || "Sin descripción."}
             </p>
