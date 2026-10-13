@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styles from "./contactSection.module.css";
+import { CLIENT_CONFIG } from "../../config";
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -18,7 +19,7 @@ const ContactSection = () => {
     const text = `Hola Carpintería San José!:) \n\nMi nombre es *${formData.name}*.\nQuiero consultar por un proyecto de: *${formData.category}*.\n\n *Mensaje:*\n${formData.message}\n\n(Mi correo es: ${formData.email})`;
 
     const encodedText = encodeURIComponent(text);
-    const waUrl = `https://wa.me/${5493794223735}?text=${encodedText}`;
+    const waUrl = `https://wa.me/${CLIENT_CONFIG.whatsappNumber}?text=${encodedText}`;
 
     window.open(waUrl, "_blank");
   };
