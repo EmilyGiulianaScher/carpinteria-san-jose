@@ -5,7 +5,7 @@
   gap: clamp(24px, 5vw, 80px);
   max-width: 1200px;
   margin: 0 auto;
-  padding: clamp(32px, 6vw, 72px) 20px;
+  padding: clamp(32px, 6vw, 72px) 20px clamp(64px, 8vw, 96px);
 }
 
 /* Circulo de color con el mueble encima, que se sale un poco por abajo. */
@@ -47,18 +47,18 @@
 
 .title {
   margin: 0 0 16px;
-  font-family: "Jost", system-ui, sans-serif;
-  font-weight: 400;
-  font-size: clamp(2rem, 4.4vw, 3.4rem);
-  line-height: 1.15;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-weight: 500;
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  line-height: 1.05;
   letter-spacing: -0.01em;
   color: var(--color-text);
 }
 
-.title strong {
+.title em {
   display: block;
-  font-family: "Merriweather", serif;
-  font-weight: 900;
+  font-style: italic;
+  color: var(--color-primary);
 }
 
 .lead {
@@ -68,81 +68,31 @@
 }
 
 .cta {
-  display: inline-block;
-  padding: 14px 32px;
-  border-radius: 4px;
-  background: var(--color-primary);
-  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 8px 8px 8px 28px;
+  border-radius: 999px;
+  background: var(--color-text);
+  color: var(--color-bg);
   font-family: "Jost", sans-serif;
   font-size: 0.95rem;
   text-decoration: none;
   transition: background-color 0.2s;
 }
 
+.ctaIcon {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(244, 233, 217, 0.5);
+  border-radius: 50%;
+}
+
 .cta:hover,
 .cta:focus-visible {
-  background: var(--color-text);
-}
-
-/* Franja oscura con las dos lineas */
-.strip {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  background: #2a1d14;
-}
-
-.tile {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  padding: 22px clamp(20px, 4vw, 48px);
-  color: #f4e9d9;
-  text-decoration: none;
-  transition: background-color 0.2s;
-}
-
-.strip li + li .tile {
-  border-left: 1px solid #4a3425;
-}
-
-.tile:hover,
-.tile:focus-visible {
-  background: #3a281b;
-}
-
-.thumb {
-  flex-shrink: 0;
-  width: 64px;
-  height: 64px;
-  object-fit: cover;
-}
-
-.tileText {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  flex: 1;
-}
-
-.tileTitle {
-  font-family: "Merriweather", serif;
-  font-weight: 700;
-  font-size: 1.05rem;
-}
-
-.tileTagline {
-  font-family: "Jost", sans-serif;
-  font-size: 0.85rem;
-  color: #cdb8a0;
-}
-
-.tileCta {
-  font-family: "Jost", sans-serif;
-  font-size: 0.9rem;
-  color: #d39a68;
+  background: var(--color-primary);
 }
 
 @media (max-width: 760px) {
@@ -152,12 +102,5 @@
   }
   .lead {
     margin-inline: auto;
-  }
-  .strip {
-    grid-template-columns: 1fr;
-  }
-  .strip li + li .tile {
-    border-left: 0;
-    border-top: 1px solid #4a3425;
   }
 }
