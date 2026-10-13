@@ -3,35 +3,34 @@ import { LINES } from "../../utils/lines";
 import { CLIENT_CONFIG } from "../../config";
 
 /**
- * Portada. El foco es la carpinteria: nombre grande, foto de un mueble y acceso a Muebles.
- * Debajo, una franja con las dos lineas (Muebles y Hogar). Las fotos son las que el cliente
- * cargo en la planilla, sin modificar.
+ * Portada. El foco es la carpinteria: un mueble sobre un circulo de color, titulo y acceso a
+ * Muebles. Debajo, una franja con las dos lineas (Muebles y Hogar). Las fotos son las que el
+ * cliente cargo en la planilla, sin modificar.
  */
 const Hero = ({ products }) => {
   const firstOf = (lineId) => products.find((p) => p.line === lineId);
   const cover = firstOf("muebles")?.coverImage;
-  const [firstWord, ...restWords] = CLIENT_CONFIG.storeName.split(" ");
 
   return (
     <header>
       <div className={styles.hero}>
-        <h1 className={styles.name}>
-          <span>{firstWord}</span>
-          <span>{restWords.join(" ")}</span>
-        </h1>
-
-        <div className={styles.body}>
-          <div className={styles.text}>
-            <p className={styles.kicker}>Corrientes, Argentina</p>
-            <p className={styles.lead}>
-              Muebles de madera hechos a medida. Diseños pensados para cada espacio.
-            </p>
-            <a href="#muebles" className={styles.cta}>
-              Ver muebles
-            </a>
-          </div>
-
+        <div className={styles.visual}>
+          <div className={styles.circle} aria-hidden="true" />
           {cover && <img src={cover} alt="" className={styles.photo} loading="eager" />}
+        </div>
+
+        <div className={styles.text}>
+          <p className={styles.kicker}>{CLIENT_CONFIG.storeName}</p>
+          <h1 className={styles.title}>
+            Muebles de madera <strong>hechos a medida</strong>
+          </h1>
+          <p className={styles.lead}>
+            Escritorios, mesas y más, fabricados en Corrientes. Diseños pensados para cada
+            espacio.
+          </p>
+          <a href="#muebles" className={styles.cta}>
+            Ver muebles
+          </a>
         </div>
       </div>
 

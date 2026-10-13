@@ -1,41 +1,39 @@
 .hero {
-  position: relative;
-  overflow: hidden;
-  padding: 36px clamp(20px, 5vw, 64px) 0;
-  background: var(--color-bg);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(24px, 5vw, 80px);
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: clamp(32px, 6vw, 72px) 20px;
 }
 
-/* Nombre en letras enormes: es lo primero que se lee. */
-.name {
-  position: relative;
-  z-index: 0;
-  display: flex;
-  flex-direction: column;
-  margin: 0;
-  font-family: "Merriweather", Georgia, serif;
-  font-weight: 900;
-  font-size: clamp(2.6rem, 10.5vw, 9.5rem);
-  line-height: 0.95;
-  letter-spacing: -0.02em;
-  text-transform: uppercase;
-  color: var(--color-text);
-}
-
-.body {
+/* Circulo de color con el mueble encima, que se sale un poco por abajo. */
+.visual {
   position: relative;
   display: grid;
-  grid-template-columns: minmax(260px, 1fr) minmax(0, 1.25fr);
-  align-items: end;
-  gap: 24px;
-  /* La foto sube y se superpone a las letras, como en la referencia. */
-  margin-top: clamp(-9rem, -9vw, -2rem);
+  place-items: center;
+  aspect-ratio: 1 / 1;
+  max-width: 520px;
+  width: 100%;
+  justify-self: center;
 }
 
-.text {
+.circle {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: #e2bf9f;
+}
+
+/* "multiply" funde el fondo blanco de la foto con el color del circulo. */
+.photo {
   position: relative;
-  z-index: 2;
-  align-self: center;
-  padding-bottom: 48px;
+  width: 112%;
+  max-width: none;
+  max-height: 80%;
+  object-fit: contain;
+  mix-blend-mode: multiply;
 }
 
 .kicker {
@@ -47,18 +45,34 @@
   color: var(--color-primary);
 }
 
+.title {
+  margin: 0 0 16px;
+  font-family: "Jost", system-ui, sans-serif;
+  font-weight: 400;
+  font-size: clamp(2rem, 4.4vw, 3.4rem);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--color-text);
+}
+
+.title strong {
+  display: block;
+  font-family: "Merriweather", serif;
+  font-weight: 900;
+}
+
 .lead {
   margin: 0 0 28px;
-  max-width: 32ch;
-  font-size: 1.1rem;
-  line-height: 1.6;
+  max-width: 38ch;
+  line-height: 1.65;
 }
 
 .cta {
   display: inline-block;
   padding: 14px 32px;
-  background: var(--color-text);
-  color: var(--color-bg);
+  border-radius: 4px;
+  background: var(--color-primary);
+  color: #fff;
   font-family: "Jost", sans-serif;
   font-size: 0.95rem;
   text-decoration: none;
@@ -67,18 +81,7 @@
 
 .cta:hover,
 .cta:focus-visible {
-  background: var(--color-primary);
-}
-
-/* "multiply" hace que el fondo blanco de la foto se funda con el color de la pagina. */
-.photo {
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  max-height: 560px;
-  object-fit: contain;
-  object-position: center bottom;
-  mix-blend-mode: multiply;
+  background: var(--color-text);
 }
 
 /* Franja oscura con las dos lineas */
@@ -143,12 +146,12 @@
 }
 
 @media (max-width: 760px) {
-  .body {
+  .hero {
     grid-template-columns: 1fr;
-    margin-top: 0;
+    text-align: center;
   }
-  .text {
-    padding-bottom: 8px;
+  .lead {
+    margin-inline: auto;
   }
   .strip {
     grid-template-columns: 1fr;
